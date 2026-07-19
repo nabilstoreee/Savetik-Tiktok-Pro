@@ -1,0 +1,198 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile and limit tracking data",
+      "type": "object",
+      "properties": {
+        "isPremium": {
+          "type": "boolean"
+        },
+        "premiumUntil": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        }
+      }
+    },
+    "Settings": {
+      "title": "Settings",
+      "description": "Global settings for the downloader platform",
+      "type": "object",
+      "properties": {
+        "isMaintenance": {
+          "type": "boolean"
+        },
+        "freeLimit": {
+          "type": "integer"
+        },
+        "loginLimit": {
+          "type": "integer"
+        },
+        "initialLimit": {
+          "type": "integer"
+        },
+        "systemNotice": {
+          "type": "string"
+        },
+        "tiktokApiUrl": {
+          "type": "string"
+        },
+        "qrisImageUrl": {
+          "type": "string"
+        },
+        "contactOwnerUrl": {
+          "type": "string"
+        },
+        "websiteBuyOtomatisUrl": {
+          "type": "string"
+        }
+      }
+    },
+    "BannedIp": {
+      "title": "BannedIp",
+      "description": "Banned IP records",
+      "type": "object",
+      "properties": {
+        "ip": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "bannedAt": {
+          "type": "string"
+        }
+      }
+    },
+    "BannedUser": {
+      "title": "BannedUser",
+      "description": "Banned user profile records",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "string"
+        },
+        "bannedAt": {
+          "type": "string"
+        }
+      }
+    },
+    "ActivityLog": {
+      "title": "ActivityLog",
+      "description": "System activity logs of downlaods and admin actions",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "platform": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string"
+        }
+      }
+    },
+    "Product": {
+      "title": "Product",
+      "description": "Product for premium limits purchase",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "price": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "waNumber": {
+          "type": "string"
+        },
+        "waMessage": {
+          "type": "string"
+        }
+      }
+    },
+    "Feedback": {
+      "title": "Feedback",
+      "description": "User-submitted bugs and feature suggestion feedbacks",
+      "type": "object",
+      "properties": {
+        "category": {
+          "type": "string",
+          "enum": ["fitur", "bug"]
+        },
+        "details": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "contact": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "userEmail": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["unread", "read", "resolved"]
+        }
+      },
+      "required": ["category", "details", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Registered user accounts and limit trackers"
+    },
+    "/settings/{docId}": {
+      "schema": "Settings",
+      "description": "Global application setting variables"
+    },
+    "/banned_ips/{ip}": {
+      "schema": "BannedIp",
+      "description": "Blacklisted IP addresses"
+    },
+    "/banned_users/{userId}": {
+      "schema": "BannedUser",
+      "description": "Blacklisted user accounts"
+    },
+    "/activity_logs/{logId}": {
+      "schema": "ActivityLog",
+      "description": "Activity logger of download histories"
+    },
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Item listings for client-side catalog"
+    },
+    "/feedbacks/{feedbackId}": {
+      "schema": "Feedback",
+      "description": "User bug and feature feedbacks"
+    }
+  }
+}
