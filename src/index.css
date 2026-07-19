@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+
+
+@theme {
+  --color-theme-bg: var(--theme-bg);
+  --color-theme-primary: var(--theme-primary);
+  --color-theme-border: var(--theme-border);
+  --color-theme-text: var(--theme-text);
+  --color-theme-panel: var(--theme-panel);
+}
+
+:root {
+  --theme-bg: #FAF8F5;
+  --theme-primary: #fde047;
+  --theme-border: #000000;
+  --theme-text: #000000;
+  --theme-shadow: #000000;
+  --theme-panel: #ffffff;
+}
+
+[data-theme="mint"] {
+  --theme-bg: #F0FDF4;
+  --theme-primary: #fde047;
+  --theme-border: #000000;
+  --theme-text: #000000;
+  --theme-shadow: #000000;
+  --theme-panel: #ffffff;
+}
+
+[data-theme="pink"] {
+  --theme-bg: #FDF2F8;
+  --theme-primary: #fde047;
+  --theme-border: #000000;
+  --theme-text: #000000;
+  --theme-shadow: #000000;
+  --theme-panel: #ffffff;
+}
+
+[data-theme="electric"] {
+  --theme-bg: #FEFCE8;
+  --theme-primary: #fde047;
+  --theme-border: #000000;
+  --theme-text: #000000;
+  --theme-shadow: #000000;
+  --theme-panel: #ffffff;
+}
+
+[data-theme="purple"] {
+  --theme-bg: #1e1e24;
+  --theme-primary: #fde047;
+  --theme-border: #ffffff;
+  --theme-text: #ffffff;
+  --theme-shadow: #000000;
+  --theme-panel: #2e2e38;
+}
+
+[data-theme="red"] {
+  --theme-bg: #FEF2F2;
+  --theme-primary: #fde047;
+  --theme-border: #000000;
+  --theme-text: #000000;
+  --theme-shadow: #000000;
+  --theme-panel: #ffffff;
+}
+
+[data-theme="tactical"] {
+  --theme-bg: #000000;
+  --theme-primary: #000000;
+  --theme-border: #ffffff;
+  --theme-text: #ffffff;
+  --theme-shadow: #000000;
+  --theme-panel: #000000;
+}
+
+[data-theme="tactical"] .page-outer-border,
+[data-theme="tactical"] div.page-outer-border {
+  border-color: #000000 !important;
+}
+
+/* Global overrides for tactical (dark) theme to ensure extreme readability and premium polish */
+[data-theme="tactical"] .text-gray-900,
+[data-theme="tactical"] .text-gray-800,
+[data-theme="tactical"] .text-gray-700,
+[data-theme="tactical"] .text-gray-600,
+[data-theme="tactical"] .text-black {
+  color: #f3f4f6 !important;
+}
+
+[data-theme="tactical"] .text-gray-500,
+[data-theme="tactical"] .text-gray-400 {
+  color: #9ca3af !important;
+}
+
+[data-theme="tactical"] .bg-white,
+[data-theme="tactical"] .bg-gray-100,
+[data-theme="tactical"] .bg-gray-200,
+[data-theme="tactical"] .bg-gray-300,
+[data-theme="tactical"] .bg-sky-200,
+[data-theme="tactical"] .bg-orange-300 {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="tactical"] .border-gray-300,
+[data-theme="tactical"] .border-theme-border {
+  border-color: #ffffff !important;
+}
+
+[data-theme="tactical"] input,
+[data-theme="tactical"] textarea,
+[data-theme="tactical"] select {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+}
+
+[data-theme="tactical"] .bg-theme-primary,
+[data-theme="tactical"] .bg-theme-primary * {
+  color: #ffffff !important;
+}
+
+/* Ensure all interactive buttons/elements that had color or light background are forced to hover dark grey in tactical */
+[data-theme="tactical"] .hover\:bg-gray-100:hover,
+[data-theme="tactical"] .hover\:bg-gray-200:hover,
+[data-theme="tactical"] .hover\:bg-gray-300:hover,
+[data-theme="tactical"] .hover\:bg-sky-300:hover,
+[data-theme="tactical"] .hover\:bg-orange-400:hover,
+[data-theme="tactical"] .hover\:brightness-95:hover {
+  background-color: #1f2937 !important;
+  color: #ffffff !important;
+}
+
+/* Perfect and robust styling for disabled states in tactical (dark) mode */
+[data-theme="tactical"] :disabled,
+[data-theme="tactical"] .disabled\:bg-gray-100:disabled,
+[data-theme="tactical"] .disabled\:bg-gray-200:disabled,
+[data-theme="tactical"] [disabled] {
+  background-color: #111111 !important;
+  color: #555555 !important;
+  border-color: #222222 !important;
+  opacity: 0.6 !important;
+  cursor: not-allowed !important;
+}
+
+[data-theme="tactical"] :disabled *,
+[data-theme="tactical"] [disabled] * {
+  color: #555555 !important;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--theme-bg);
+  color: var(--theme-text);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.bg-theme-primary {
+  color: #000000 !important;
+}
+
+/* Custom Audio Player Range Sliders - Force Thumbs to be White */
+.custom-audio-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50% !important;
+  background: #ffffff !important;
+  border: 2px solid #000000 !important;
+  cursor: pointer;
+  margin-top: -3px; /* Align with track if needed */
+}
+
+.custom-audio-range::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50% !important;
+  background: #ffffff !important;
+  border: 2px solid #000000 !important;
+  cursor: pointer;
+}
