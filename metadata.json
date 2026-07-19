@@ -1,0 +1,6 @@
+{
+  "name": "SaveTik Pro",
+  "description": "Professional TikTok and YouTube Video Downloader.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
