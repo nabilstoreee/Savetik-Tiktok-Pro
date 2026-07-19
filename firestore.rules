@@ -1,0 +1,39 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{userId} {
+      allow read: if request.auth != null && (request.auth.uid == userId || request.auth.token.email == 'jrnabil570@gmail.com');
+      allow write: if request.auth != null && (request.auth.uid == userId || request.auth.token.email == 'jrnabil570@gmail.com');
+    }
+
+    match /settings/{docId} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.token.email == 'jrnabil570@gmail.com';
+    }
+
+    match /banned_ips/{ip} {
+      allow read, write: if request.auth != null && request.auth.token.email == 'jrnabil570@gmail.com';
+    }
+
+    match /banned_users/{userId} {
+      allow read: if request.auth != null && (request.auth.uid == userId || request.auth.token.email == 'jrnabil570@gmail.com');
+      allow write: if request.auth != null && request.auth.token.email == 'jrnabil570@gmail.com';
+    }
+
+    match /activity_logs/{logId} {
+      allow create: if true;
+      allow read: if request.auth != null && request.auth.token.email == 'jrnabil570@gmail.com';
+      allow update, delete: if false;
+    }
+
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.token.email == 'jrnabil570@gmail.com';
+    }
+
+    match /feedbacks/{feedbackId} {
+      allow create: if true;
+      allow read, update, delete: if request.auth != null && request.auth.token.email == 'jrnabil570@gmail.com';
+    }
+  }
+}
